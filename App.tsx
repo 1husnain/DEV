@@ -44,12 +44,14 @@ const CookieConsent = () => {
         <div className="flex gap-4">
           <button 
             onClick={accept}
+            aria-label="Accept all cookies"
             className="bg-primary hover:bg-indigo-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap"
           >
             Accept All
           </button>
           <button 
             onClick={() => setVisible(false)}
+            aria-label="Close cookie banner"
             className="text-gray-400 hover:text-white p-2"
           >
             <X className="w-5 h-5" />
@@ -72,7 +74,7 @@ const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose:
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">{title}</h3>
-              <button onClick={onClose} className="text-gray-400 hover:text-gray-500">
+              <button onClick={onClose} aria-label="Close modal" className="text-gray-400 hover:text-gray-500">
                 <X className="w-6 h-6" />
               </button>
             </div>
@@ -198,12 +200,17 @@ function App() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-indigo-700 pt-16 pb-24 px-4 sm:px-6 lg:px-8 text-center text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+          {/* Performance Fix: Use pure CSS pattern instead of external image to improve LCP */}
+          <div className="absolute inset-0 opacity-10" style={{
+            backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+            backgroundSize: '20px 20px'
+          }}></div>
+          
           <div className="relative max-w-4xl mx-auto z-10">
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 text-white drop-shadow-sm">
               OptiCompress: Reduce File Size Online <br/> Smart & Free
             </h1>
-            <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-indigo-50 mb-10 max-w-2xl mx-auto font-medium">
               Reduce image file sizes by up to 90% without losing quality. 
               Secure, private, and runs entirely in your browser.
             </p>
@@ -212,11 +219,12 @@ function App() {
             <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg mb-6 inline-flex flex-wrap gap-4 items-center justify-center border border-white/20">
                <div className="flex items-center gap-2">
                   <Settings className="w-4 h-4 text-indigo-200" />
-                  <span className="text-sm font-medium">Format:</span>
+                  <label htmlFor="format-select" className="text-sm font-medium text-white">Format:</label>
                   <select 
+                      id="format-select"
                       value={settings.format}
                       onChange={(e) => handleSettingsChange('format', e.target.value)}
-                      className="bg-indigo-900 border-none rounded text-sm py-1 pl-2 pr-8 focus:ring-2 focus:ring-indigo-400 cursor-pointer"
+                      className="bg-indigo-900 text-white border-none rounded text-sm py-1 pl-2 pr-8 focus:ring-2 focus:ring-indigo-400 cursor-pointer"
                   >
                       <option value="image/webp">WebP (Recommended)</option>
                       <option value="image/jpeg">JPEG</option>
@@ -224,8 +232,9 @@ function App() {
                   </select>
                </div>
                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium">Quality:</span>
+                  <label htmlFor="quality-range" className="text-sm font-medium text-white">Quality:</label>
                   <input 
+                      id="quality-range"
                       type="range" 
                       min="0.1" 
                       max="1.0" 
@@ -234,7 +243,7 @@ function App() {
                       onChange={(e) => handleSettingsChange('quality', parseFloat(e.target.value))}
                       className="w-24 accent-green-400"
                   />
-                  <span className="text-xs w-8 text-left">{Math.round(settings.quality * 100)}%</span>
+                  <span className="text-xs w-8 text-left text-white font-mono">{Math.round(settings.quality * 100)}%</span>
                </div>
             </div>
 
@@ -262,8 +271,8 @@ function App() {
                   <div className="bg-indigo-100 p-4 rounded-full mb-4">
                       <Upload className="w-10 h-10 text-indigo-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Drop images here</h3>
-                  <p className="text-gray-500 mb-6">Supports JPG, PNG, and WebP</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Drop images here</h2>
+                  <p className="text-gray-600 mb-6 font-medium">Supports JPG, PNG, and WebP</p>
                   <button className="bg-primary hover:bg-indigo-800 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:-translate-y-0.5">
                       Select Images
                   </button>
@@ -272,8 +281,8 @@ function App() {
           </div>
         </section>
 
-        {/* Ad Slot 1 */}
-        <div className="max-w-4xl mx-auto px-4">
+        {/* Ad Slot 1 - Min Height to prevent Layout Shift */}
+        <div className="max-w-4xl mx-auto px-4 min-h-[140px]">
            <AdPlaceholder format="horizontal" />
         </div>
 
@@ -302,7 +311,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
                   <h2 className="text-3xl font-extrabold text-gray-900">Why Choose OptiCompress?</h2>
-                  <p className="mt-4 text-lg text-gray-500">
+                  <p className="mt-4 text-lg text-gray-600">
                     The professional choice for web developers, bloggers, and SEO specialists.
                   </p>
               </div>
@@ -380,8 +389,8 @@ function App() {
           </div>
         </section>
 
-        {/* Ad Slot 2 */}
-        <div className="max-w-4xl mx-auto px-4 bg-gray-50 py-8">
+        {/* Ad Slot 2 - Min Height */}
+        <div className="max-w-4xl mx-auto px-4 bg-gray-50 py-8 min-h-[140px]">
            <AdPlaceholder format="horizontal" />
         </div>
 

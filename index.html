@@ -47,6 +47,11 @@
     
     <title>OptiCompress - Free Online Image Compressor & Optimizer</title>
     
+    <!-- Optimized Font Loading: Preconnect to Google Fonts and use Swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <!-- JSON-LD Structured Data for Software Application -->
     <script type="application/ld+json">
     {
@@ -77,6 +82,35 @@
       }
     }
     </script>
+    <!-- FAQ Schema for Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is this image compressor free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, OptiCompress is completely free to use. There are no daily limits, no watermarks, and no registration required."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you keep my photos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. OptiCompress operates entirely in your browser using client-side technology. Your images are never sent to a server."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the best format for websites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We recommend WebP. It provides superior compression (30% smaller) compared to JPEG and PNG while maintaining high quality."
+        }
+      }]
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -92,7 +126,6 @@
       }
     </script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
       body {
         font-family: 'Inter', sans-serif;
       }
@@ -114,9 +147,20 @@
         scroll-behavior: smooth;
       }
     </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
