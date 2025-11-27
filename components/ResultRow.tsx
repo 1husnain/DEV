@@ -13,10 +13,10 @@ export const ResultRow: React.FC<ResultRowProps> = ({ file }) => {
     const url = URL.createObjectURL(file.compressedBlob);
     const a = document.createElement('a');
     a.href = url;
-    // Append '-optimized' to original name
+    // Append '-opticompress' to original name
     const nameParts = file.originalFile.name.split('.');
     const ext = nameParts.pop();
-    const newName = `${nameParts.join('.')}-optipress.${file.settings.format.split('/')[1] === 'jpeg' ? 'jpg' : file.settings.format.split('/')[1]}`;
+    const newName = `${nameParts.join('.')}-opticompress.${file.settings.format.split('/')[1] === 'jpeg' ? 'jpg' : file.settings.format.split('/')[1]}`;
     a.download = newName;
     document.body.appendChild(a);
     a.click();

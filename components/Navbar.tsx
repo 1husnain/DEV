@@ -31,10 +31,10 @@ export const Navbar: React.FC = () => {
               href="/"
               className="flex-shrink-0 flex items-center gap-2 cursor-pointer" 
               onClick={scrollToTop}
-              aria-label="OptiPress Homepage - Online Image Compressor"
+              aria-label="OptiCompress Homepage - Online Image Compressor"
             >
               <Layers className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl text-gray-900">OptiPress</span>
+              <span className="font-bold text-xl text-gray-900">OptiCompress</span>
             </a>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <a 

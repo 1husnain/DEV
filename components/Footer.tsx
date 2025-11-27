@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               onClick={(e) => scrollToTop(e)}
             >
               <Layers className="h-6 w-6 text-gray-400" />
-              <span className="font-bold text-lg text-gray-700">OptiPress</span>
+              <span className="font-bold text-lg text-gray-700">OptiCompress</span>
             </div>
             <p className="text-sm text-gray-500">
               The smartest way to optimize your images for the web. Free, secure, and client-side processing.
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
           </div>
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8 text-center">
-          <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} OptiPress. All rights reserved.</p>
+          <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} OptiCompress. All rights reserved.</p>
         </div>
       </div>
     </footer>

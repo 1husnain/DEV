@@ -13,7 +13,7 @@ const CookieConsent = () => {
 
   useEffect(() => {
     try {
-      const consented = localStorage.getItem('optipress-consent');
+      const consented = localStorage.getItem('opticompress-consent');
       if (!consented) {
         setVisible(true);
       }
@@ -25,7 +25,7 @@ const CookieConsent = () => {
 
   const accept = () => {
     try {
-      localStorage.setItem('optipress-consent', 'true');
+      localStorage.setItem('opticompress-consent', 'true');
     } catch (e) {
       console.warn('LocalStorage write failed');
     }
@@ -61,7 +61,7 @@ const CookieConsent = () => {
 };
 
 // Legal Modal Component
-const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children: React.ReactNode }) => {
+const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children?: React.ReactNode }) => {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[60] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -179,7 +179,7 @@ function App() {
     setIsDragging(false);
     
     if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
-        const filesArray = Array.from(e.dataTransfer.files);
+        const filesArray = Array.from(e.dataTransfer.files) as File[];
         const validFiles = filesArray.filter((f) => f.type && f.type.startsWith('image/'));
         if (validFiles.length > 0) {
           processFiles(validFiles);
@@ -201,7 +201,7 @@ function App() {
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           <div className="relative max-w-4xl mx-auto z-10">
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
-              Free Online Image Compressor <br/> Reduce File Size for SEO
+              OptiCompress: Reduce File Size Online <br/> Smart & Free
             </h1>
             <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
               Reduce image file sizes by up to 90% without losing quality. 
@@ -301,7 +301,7 @@ function App() {
         <section className="py-16 bg-white scroll-mt-16" id="features">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                  <h2 className="text-3xl font-extrabold text-gray-900">Why Choose OptiPress?</h2>
+                  <h2 className="text-3xl font-extrabold text-gray-900">Why Choose OptiCompress?</h2>
                   <p className="mt-4 text-lg text-gray-500">
                     The professional choice for web developers, bloggers, and SEO specialists.
                   </p>
@@ -372,7 +372,7 @@ function App() {
                     Client-Side vs. Server-Side Compression
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    OptiPress uses client-side compression. This means your images are processed directly on your device using your browser's capabilities. Unlike server-side tools where you upload your data to a remote cloud, client-side processing guarantees that your sensitive files never leave your computer, offering 100% data privacy and security.
+                    OptiCompress uses client-side compression. This means your images are processed directly on your device using your browser's capabilities. Unlike server-side tools where you upload your data to a remote cloud, client-side processing guarantees that your sensitive files never leave your computer, offering 100% data privacy and security.
                   </p>
                 </div>
               </div>
@@ -415,7 +415,7 @@ function App() {
               <div className="space-y-8">
                   <div>
                       <h3 className="text-lg font-medium text-gray-900 mb-2">Is this image compressor free?</h3>
-                      <p className="text-gray-500">Yes, OptiPress is completely free to use. There are no daily limits, no watermarks, and no registration required.</p>
+                      <p className="text-gray-500">Yes, OptiCompress is completely free to use. There are no daily limits, no watermarks, and no registration required.</p>
                   </div>
                   <div>
                       <h3 className="text-lg font-medium text-gray-900 mb-2">What is the best format for websites?</h3>
@@ -423,7 +423,7 @@ function App() {
                   </div>
                   <div>
                       <h3 className="text-lg font-medium text-gray-900 mb-2">Do you keep my photos?</h3>
-                      <p className="text-gray-500">No. OptiPress operates entirely in your browser. Your images are never sent to a server.</p>
+                      <p className="text-gray-500">No. OptiCompress operates entirely in your browser. Your images are never sent to a server.</p>
                   </div>
               </div>
           </div>
@@ -437,28 +437,28 @@ function App() {
       <Modal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} title="Privacy Policy">
         <div className="prose prose-sm">
           <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
-          <p>At OptiPress, accessible from https://optipress.app, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OptiPress and how we use it.</p>
+          <p>At OptiCompress, accessible from https://opticompress.app, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OptiCompress and how we use it.</p>
           <h4>1. Client-Side Processing</h4>
-          <p>OptiPress is a client-side tool. When you "upload" an image to compress, it is processed entirely within your web browser. Your images are <strong>never</strong> uploaded to our servers, stored, or viewed by us. You retain full ownership and privacy of your files.</p>
+          <p>OptiCompress is a client-side tool. When you "upload" an image to compress, it is processed entirely within your web browser. Your images are <strong>never</strong> uploaded to our servers, stored, or viewed by us. You retain full ownership and privacy of your files.</p>
           <h4>2. Cookies and Web Beacons</h4>
-          <p>Like any other website, OptiPress uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+          <p>Like any other website, OptiCompress uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
           <h4>3. Google DoubleClick DART Cookie</h4>
           <p>Google is a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet.</p>
           <h4>4. Third Party Privacy Policies</h4>
-          <p>OptiPress's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.</p>
+          <p>OptiCompress's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.</p>
         </div>
       </Modal>
 
       <Modal isOpen={showTerms} onClose={() => setShowTerms(false)} title="Terms of Service">
         <div className="prose prose-sm">
           <p><strong>1. Terms</strong></p>
-          <p>By accessing this Website, accessible from https://optipress.app, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws.</p>
+          <p>By accessing this Website, accessible from https://opticompress.app, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws.</p>
           <p><strong>2. Use License</strong></p>
-          <p>Permission is granted to temporarily download one copy of the materials on OptiPress's Website for personal, non-commercial transitory viewing only.</p>
+          <p>Permission is granted to temporarily download one copy of the materials on OptiCompress's Website for personal, non-commercial transitory viewing only.</p>
           <p><strong>3. Disclaimer</strong></p>
-          <p>The materials on OptiPress's Website are provided "as is". OptiPress makes no warranties, may it be expressed or implied, and hereby disclaims and negates all other warranties.</p>
+          <p>The materials on OptiCompress's Website are provided "as is". OptiCompress makes no warranties, may it be expressed or implied, and hereby disclaims and negates all other warranties.</p>
           <p><strong>4. Limitations</strong></p>
-          <p>In no event shall OptiPress or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on OptiPress's Website.</p>
+          <p>In no event shall OptiCompress or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on OptiCompress's Website.</p>
         </div>
       </Modal>
     </div>
