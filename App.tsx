@@ -1,7 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Upload, Settings, Zap, Shield, Image as ImageIcon, X, FileText, Lock } from 'lucide-react';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AdPlaceholder } from './components/AdPlaceholder';
@@ -463,8 +461,6 @@ function App() {
           <p>In no event shall OptiCompress or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on OptiCompress's Website.</p>
         </div>
       </Modal>
-      <Analytics />
-      <SpeedInsights />
     </div>
   );
 }
