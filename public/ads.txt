@@ -1,0 +1,3 @@
+google.com, pub-1064418449699167, DIRECT, f08c47fec0942fa0
+adsterra.com, 2324, DIRECT
+effectivegatecpm.com, 2324, DIRECT
